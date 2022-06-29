@@ -5,6 +5,4 @@ function getSpeciesByIds(...ids) {
   return ids.map((id) => species.find((specie) => specie.id === id));
 }
 
-console.log(species)
-
 module.exports = getSpeciesByIds;
