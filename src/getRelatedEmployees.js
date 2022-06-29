@@ -1,7 +1,10 @@
+const { employees } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
+// criar array com managers? usar some
+
 function isManager(id) {
-  // seu código aqui
+  
 }
 
 function getRelatedEmployees(managerId) {
