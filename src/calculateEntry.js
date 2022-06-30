@@ -1,14 +1,4 @@
-const en = require('faker/lib/locales/en');
 const data = require('../data/zoo_data');
-
-const array = [
-	{ name:  'Lara Carvalho', age:  5 },
-	{ name:  'Frederico Moreira', age:  5 },
-	{ name:  'Pedro Henrique Carvalho', age:  5 },
-	{ name:  'Maria Costa', age:  18 },
-	{ name:  'Núbia Souza', age:  18 },
-	{ name:  'Carlos Nogueira', age:  50 },
-];
 
 function countEntrants(entrants) {
   const child = entrants.filter((element) => element.age >= 0 && element.age < 18);
@@ -28,7 +18,5 @@ function calculateEntry(entrants) {
   } const { child, adult, senior } = countEntrants(entrants);
   return (child * 20.99) + (adult * 49.99) + (senior * 24.99);
 }
-
-console.log(calculateEntry(array));
 
 module.exports = { calculateEntry, countEntrants };
