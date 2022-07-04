@@ -52,7 +52,7 @@ function getSchedule(scheduleTarget) {
   } if (scheduleTarget === 'Monday') {
     return {
       Monday: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' },
-    }
+    };
   } if (days.includes(scheduleTarget)) {
     const exhibitionDays = species.filter((specie) => specie.availability.includes(scheduleTarget));
     const getDay = days.find((day) => day === scheduleTarget);
