@@ -49,12 +49,21 @@ function getSchedule(scheduleTarget) {
   if (animalNames.includes(scheduleTarget)) {
     const result = species.find((specie) => scheduleTarget === specie.name);
     return result.availability;
+  } if (scheduleTarget === 'Monday') {
+    return {
+      Monday: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' },
+    }
   } if (days.includes(scheduleTarget)) {
-    
+    const exhibitionDays = species.filter((specie) => specie.availability.includes(scheduleTarget));
+    const getDay = days.find((day) => day === scheduleTarget);
+    const { open, close } = hours[getDay];
+    const result = {};
+    result[getDay] = { officeHour: `Open from ${open}am until ${close}pm`,
+      exhibition: exhibitionDays.map((e) => e.name),
+    };
+    return result;
   }
   return notParam(scheduleTarget);
 }
 
-console.log(allDaysAndAnimals);
 module.exports = getSchedule;
-
