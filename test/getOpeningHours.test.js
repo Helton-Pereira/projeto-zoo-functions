@@ -15,7 +15,7 @@ describe('Testes da função getOpeningHours', () => {
     expect(getOpeningHours()).toEqual(expectedList);
   });
   it('Caso sejam passados "Monday" e "09:00-AM" como paramêtros, deve retornar mensagem que Zoo está fechado', () => {
-    expect(getOpeningHours('Mnday', '09:00-AM')).toEqual('The zoo is closed');
+    expect(getOpeningHours('Monday', '09:00-AM')).toEqual('The zoo is closed');
   });
   it('Caso sejam passados "Tuesday" e "09:00-AM" como paramêtros, deve retornar a mensagem que o Zoo está aberto', () => {
     expect(getOpeningHours('Tuesday', '09:00-AM')).toEqual('The zoo is open');
@@ -35,7 +35,10 @@ describe('Testes da função getOpeningHours', () => {
   it('Caso sejam passados "Sunday" e "09:c0-AM" como paramêtros, deve lançar uma exceção informado que os minutos devem representar um número', () => {
     expect(getOpeningHours('Saturday', '09:c0-AM')).toThrow(/^The minutes should represent a number$/);
   });
-  it('Caso a hora passa seja mesnor que zero ou maior que 12, deve lançar exceção informando quais os valores são aceitos', () => {
+  it('Caso a hora passada seja menor que zero ou maior que 12, deve lançar exceção informando quais os valores são aceitos', () => {
     expect(getOpeningHours('Saturday', '15:00-AM')).toThrow(/^The hour must be between 0 and 12$/);
+  });
+  it('Caso o minuto passado seja menor que zero ou maior que 59, deve lançar exceção informando quais os valores são aceitos', () => {
+    expect(getOpeningHours('Saturday', '10:60-AM')).toThrow(/^The minutes must be between 0 and 59$/);
   });
 });
